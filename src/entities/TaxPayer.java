@@ -50,10 +50,10 @@ public class TaxPayer {
 	public double salaryTax() {
 		salaryIncome /= 12;
 		if (salaryIncome >=3000.00){
-			return salaryIncome * 0.1;
+			return 12 * (salaryIncome * 0.1);
 		}
 		else if (salaryIncome >=5000.00) {
-			return salaryIncome * 0.2;
+			return 12 * (salaryIncome * 0.2);
 		}
 		else {
 			return 0.0;
@@ -72,12 +72,15 @@ public class TaxPayer {
 		return salaryTax() + serviceTax() + capitalTax(); 
 	}
 	
+	double expenses = healthSpending + educationalSpending;
+	double rebateLimit = grossTax() * 0.3;
+	
 	public double taxRebate() {
-		if (healthSpending + educationalSpending < grossTax() * 0.3) {
-			return healthSpending + educationalSpending;
+		if ( expenses < rebateLimit) {
+			return expenses;
 		}
 		else {
-			return grossTax() * 0.3;
+			return rebateLimit;
 		}
 	}
 	
