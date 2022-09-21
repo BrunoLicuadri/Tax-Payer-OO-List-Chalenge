@@ -14,7 +14,7 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("Quantos contribuintes você vai digitar?");
+		System.out.print("Quantos contribuintes você vai digitar? -> ");
 		int n =sc.nextInt();
 		
 		List<TaxPayer> list = new ArrayList<>();
@@ -31,20 +31,18 @@ public class Program {
 			double capitalIncome = sc.nextDouble();
 			
 			System.out.print("Gastos médicos:");
-			double healthSpendidng = sc.nextDouble();
+			double healthSpending = sc.nextDouble();
 			System.out.print("Gastos educacionais:");
 			double educationalSpending = sc.nextDouble();
 			System.out.println();
 			
-			tp = new TaxPayer(salaryIncome, serviceIncome, capitalIncome, healthSpendidng, educationalSpending);
-			list.add(tp);
-			
-			System.out.println("Ababtimento: " + tp.taxRebate());
+			tp = new TaxPayer(salaryIncome, serviceIncome, capitalIncome, healthSpending, educationalSpending);
+			list.add(tp);				
 			
 			System.out.println();
 			System.out.println("Resumo do " + i +"o Contribuinte:");
 			System.out.print("Imposto Bruto total: " + String.format("%.2f",tp.grossTax()));
-			System.out.print("\nAbatimento: " + String.format("%.2f", tp.taxRebate()));
+			System.out.print("\nAbatimentos: " + String.format("%.2f", tp.taxRebate()));
 			System.out.print("\nImposto Devido: " + String.format("%.2f", tp.netTax()));
 			System.out.println();
 		}

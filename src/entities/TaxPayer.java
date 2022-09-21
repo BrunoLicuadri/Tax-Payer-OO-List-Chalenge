@@ -15,6 +15,8 @@ public class TaxPayer {
 		this.healthSpending = healthSpending;
 		this.educationalSpending = educationalSpending;
 	}
+	
+	
 	public double getSalaryIncome() {
 		return salaryIncome;
 	}
@@ -48,16 +50,20 @@ public class TaxPayer {
 	
 	
 	public double salaryTax() {
-		salaryIncome /= 12;
-		if (salaryIncome >=3000.00){
-			return 12 * (salaryIncome * 0.1);
+		double monthlySalary = salaryIncome / 12.0;
+		double incomeTax;
+		
+		if (monthlySalary >=3000.00){
+			incomeTax = 12 * (monthlySalary * 0.1);
 		}
-		else if (salaryIncome >=5000.00) {
-			return 12 * (salaryIncome * 0.2);
+		else if (monthlySalary >=5000.00) {
+			 incomeTax = 12 * (monthlySalary * 0.2);
 		}
 		else {
-			return 0.0;
+			incomeTax = 0.0;
 		}
+		
+		return incomeTax;
 	}
 	
 	public double serviceTax() {
@@ -69,19 +75,22 @@ public class TaxPayer {
 	}
 	
 	public double grossTax() {
-		return salaryTax() + serviceTax() + capitalTax(); 
+		return salaryTax() + serviceTax() + capitalTax();
 	}
 	
-	double expenses = healthSpending + educationalSpending;
-	double rebateLimit = grossTax() * 0.3;
+	public double expenses = healthSpending + educationalSpending;
+	public double rebateLimit = 0.3 * grossTax();
+	public double rebate;
 	
 	public double taxRebate() {
 		if ( expenses < rebateLimit) {
-			return expenses;
+			rebate = expenses;
 		}
 		else {
-			return rebateLimit;
+			rebate = rebateLimit;
 		}
+		
+		return rebate;
 	}
 	
 	public double netTax() {
