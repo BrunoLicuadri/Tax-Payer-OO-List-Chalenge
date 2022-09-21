@@ -37,13 +37,15 @@ public class Program {
 			System.out.println();
 			
 			tp = new TaxPayer(salaryIncome, serviceIncome, capitalIncome, healthSpending, educationalSpending);
-			list.add(tp);				
+			list.add(tp);
+
 			
 			System.out.println();
 			System.out.println("Resumo do " + i +"o Contribuinte:");
 			System.out.print("Imposto Bruto total: " + String.format("%.2f",tp.grossTax()));
 			System.out.print("\nAbatimentos: " + String.format("%.2f", tp.taxRebate()));
 			System.out.print("\nImposto Devido: " + String.format("%.2f", tp.netTax()));
+			System.out.println();
 			System.out.println();
 		}
 		
